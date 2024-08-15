@@ -34,7 +34,7 @@ export const ProductCard = ({ item, className, readOnly }: { item: any, classNam
                 />
 
             </div>
-            <div className="relative col-span-full bg-white-100 rounded-b-md p-4 shadow shadow-white-200  flex flex-col justify-between">
+            <div className="relative col-span-full bg-white rounded-b-md p-4 shadow shadow-white-200  flex flex-col justify-between">
                 <Button variant="outline" className="absolute right-4 -top-1 -translate-y-1/2 rounded-full aspect-square p-0 border-4 border-white-200 flex items-center justify-center cursor-not-allowed">
                     <ShoppingCartIcon className="h-4 w-4" />
                 </Button>
@@ -54,7 +54,7 @@ export const ProductCard = ({ item, className, readOnly }: { item: any, classNam
 
                     <p>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.price)}</p>
 
-                    <Button onClick={goToWhatsapp} variant="swipe" size="sm" className="flex items-center gap-2 z-10 border-white-100 hover:bg-secondary-300 bg-secondary text-primary-200 hover:text-white-700">
+                    <Button onClick={goToWhatsapp} variant="swipe" size="sm" className="flex items-center gap-2 z-10 border-white-100 hover:bg-primary-300 bg-primary text-primary-200 hover:text-white-700">
                         <Coins className="h-4 w-4 mr-2" />
                         <span className="text-white-600">
                             Comprar

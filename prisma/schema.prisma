@@ -263,3 +263,20 @@ model OrderReview {
   userId    String
   OrderItem OrderItem?
 }
+
+// menu strucure for mealplan
+
+model MenuItem {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  category    MenuCategory @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+}
+
+model MenuCategory {
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
+  description String?
+  items       MenuItem[]
+}

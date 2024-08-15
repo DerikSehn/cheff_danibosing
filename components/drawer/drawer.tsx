@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import useHandleClickAway from './use-handle-click-away';
-import { isFunction } from 'lodash';
+import { isFunction } from '@/lib/utils';
 
 type DrawerProps = {
     isOpen?: boolean;
@@ -19,7 +19,7 @@ const Drawer = ({ isOpen, onClose, children, anchor, className, clickArea }: Dra
     const [isAreaOpen, toggleOpen] = useState(isOpen);
     const handleClose = () => {
         toggleOpen(!isAreaOpen);
-        if (isFunction(onClose)) {
+        if (typeof onClose === 'function') {
             onClose();
         }
     }
@@ -98,7 +98,7 @@ const Drawer = ({ isOpen, onClose, children, anchor, className, clickArea }: Dra
             ) : null}
             {isAreaOpen && (
                 <motion.div
-                    className={twMerge(`drawer-content overflow-y-auto fixed ${getDrawerStyles()} bg-white-100 border-white-200 border shadow-lg z-50 `, className)}
+                    className={twMerge(`drawer-content overflow-y-auto fixed ${getDrawerStyles()} bg-white border-white-200 border shadow-lg z-50 `, className)}
                     initial={getInitialAnimation()}
                     animate={getAnimation()}
                     exit={getExitAnimation()}

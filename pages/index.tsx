@@ -18,22 +18,8 @@ export default function Home({ projects, testimonials, services, partners, secti
 
   return (<div className="relative z-0">
     <Page className={`relative z-1  ${yeseva_one.className} ${prata.className}`}>
-      <div className="flex flex-col w-full min-h-[100vh] bg-primary-300">
-        <Hero />
-        <HeroCards services={services} />
-        <Projects projects={projects} />
-        {/* <About /> */}
-        <ScrollSectionReveal content={
-          <Sections sections={sections} />
-        }>
-          <ScrollSectionReveal content={
-            <Partners partners={partners} />
-          }>
-            <Testimonials testimonials={testimonials} />
-          </ScrollSectionReveal>
-        </ScrollSectionReveal>
-      </div>
-      <Contact />
+      <Hero />
+
     </Page>
   </div>
   );

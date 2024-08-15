@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
                         <p><strong>Afiliada</strong> significa uma entidade que controla, é controlada por, ou está sob controle comum com uma parte, onde "controle" significa a propriedade de 50% ou mais das ações, participação acionária ou outros títulos com direito a voto para eleição de diretores ou outra autoridade de gestão.</p>
                     </li>
                     <li>
-                        <p><strong>Empresa</strong> (referida como "a Empresa", "Nós", "Nos" ou "Nosso" neste Acordo) refere-se à Cultura Verde, "R. Ceriaco Jerônimo de Souza, 817 - Guará, Xangri-lá - RS, 95588-000, Brasil".</p>
+                        <p><strong>Empresa</strong> (referida como "a Empresa", "Nós", "Nos" ou "Nosso" neste Acordo) refere-se à Chef Daniela Bosing, "R. Ceriaco Jerônimo de Souza, 817 - Guará, Xangri-lá - RS, 95588-000, Brasil".</p>
                     </li>
                     <li>
                         <p><strong>Cookies</strong> são pequenos arquivos que são colocados no seu computador, dispositivo móvel ou qualquer outro dispositivo por um site, contendo os detalhes do seu histórico de navegação nesse site, entre seus muitos usos.</p>
@@ -55,7 +55,7 @@ export default function PrivacyPolicy() {
                         <p><strong>Dados de Uso</strong> refere-se a dados coletados automaticamente, seja gerados pelo uso do serviço ou da própria infraestrutura do serviço (por exemplo, a duração de uma visita a uma página).</p>
                     </li>
                     <li>
-                        <p><strong>Site</strong> refere-se à Cultura Verde, acessível a partir de <a href={url} rel="external nofollow noopener" target="_blank">{url}</a></p>
+                        <p><strong>Site</strong> refere-se à Chef Daniela Bosing, acessível a partir de <a href={url} rel="external nofollow noopener" target="_blank">{url}</a></p>
                     </li>
                     <li>
                         <p><strong>Você</strong> significa o indivíduo acessando ou usando o serviço, ou a empresa, ou outra entidade jurídica em nome da qual esse indivíduo está acessando ou usando o serviço, conforme aplicável.</p>

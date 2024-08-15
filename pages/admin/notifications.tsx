@@ -93,7 +93,7 @@ const Notifications = ({ receivedEmails = [] }: { receivedEmails: ReceivedEmail[
                                     <TableRow
                                         role={'button'}
                                         onMouseLeave={() => !receivedEmail.isRead && markAsRead(receivedEmail.id)} // Chama a função com o ID do email
-                                        className={cn("hover:bg-white-100 cursor-pointer", receivedEmail.isRead ? "bg-white-200" : "bg-white-50")}
+                                        className={cn("hover:bg-white cursor-pointer", receivedEmail.isRead ? "bg-white-200" : "bg-white-50")}
                                     >
                                         <TableCell>{receivedEmail.email}</TableCell>
                                         <TableCell>{receivedEmail.name}</TableCell>

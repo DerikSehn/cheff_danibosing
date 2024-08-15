@@ -14,7 +14,7 @@ export default function Projects({ projects }: { projects: ModelWithImages<Proje
         <SectionHeader
             className="lg:relative"
             title="Projetos"
-            subtitle="Realizações da Cultura Verde"
+            subtitle="Realizações da Chef Daniela Bosing"
         />
         <div className=" relative  z-40 w-full   min-h-[600px] flex justify-center text-center items-center sm:text-left  h-[200vh]">
             <div className="absolute inset-0 bottom-0  bg-gradient-to-b from-transparent  via-30% via-primary-300 to-primary-200 z-[10]" />

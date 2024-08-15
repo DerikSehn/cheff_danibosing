@@ -25,7 +25,7 @@ export default function Sections({ sections = [] }: { sections: ModelWithImages<
         </List> */}
             <div className={cn(" space-y-2 text-center mx-auto px-4 my-10")}>
                 <h3 className="inline-block rounded-lg bg-primary-600 px-3 py-1 text-sm dark:bg-primary-600 text-primary-900 ">
-                    Conheça a Cultura Verde
+                    Conheça a Chef Daniela Bosing
                 </h3>
                 <div className="text-3xl font-light tracking-wide sm:text-5xl lg:text-7xl max-w-screen-md text-jet-900 font-moglan">
                     <h2 className="text-primary-800 text-5xl lg:text-8xl font-moglan"
@@ -92,7 +92,7 @@ const SectionItem = ({ section, className }: { section: ModelWithImages<SectionT
                     </p>
                     <br />
                     <br />
-                    <Button variant={'default'} className="bg-secondary/10">
+                    <Button variant={'default'} className="bg-primary/10">
                         Clique para saber mais
                     </Button>
                 </div>

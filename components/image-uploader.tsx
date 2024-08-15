@@ -35,7 +35,7 @@ export function ImageUploader({ onUpload }: { onUpload: (data: { file: File; des
   }
 
   return (
-    <div className="flex items-center h-full justify-center bg-white-100">
+    <div className="flex items-center h-full justify-center bg-white">
       <div className="flex w-full max-w-4xl rounded-lg">
         <div className="flex flex-col items-center justify-center w-1/2 bg-white-200 p-6 rounded-l-lg">
           <div className="w-full rounded-lg flex items-center justify-center">

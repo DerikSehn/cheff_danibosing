@@ -62,7 +62,7 @@ export default function AutoFormFile({
         </div>
       )}
       {(file || field.value) && (
-        <div className="grid grid-cols-2 gap-2 rounded-lg border p-2 text-black focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-white-100 dark:text-black dark:focus-visible:ring-0 dark:focus-visible:ring-offset-0">
+        <div className="grid grid-cols-2 gap-2 rounded-lg border p-2 text-black focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-white dark:text-black dark:focus-visible:ring-0 dark:focus-visible:ring-offset-0">
           <div className="relative aspect-square">
             <Image
               src={field.value?.url || fileUrl || ""}

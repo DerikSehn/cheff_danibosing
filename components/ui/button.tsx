@@ -11,16 +11,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gray-900 text-gray-50 hover:bg-gray-900/90 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90",
+        default: "bg-black text-gray-50 hover:bg-black/90 dark:bg-gray-50 dark:text-black dark:hover:bg-gray-50/90",
         destructive:
           "bg-red-500 text-gray-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-gray-50 dark:hover:bg-red-900/90",
         outline:
-          "border border-gray-200 bg-white hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50",
+          "border border-gray-200 bg-white hover:bg-gray-100 hover:text-black dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50",
         secondary:
-          "bg-gray-100 text-gray-900 hover:bg-gray-100/80 dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-800/80",
-        ghost: "hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50",
-        swipe: "relative overflow-hidden rounded-full border-2 border-solid border-secondary-500 px-4 py-2 text-sm text-secondary hover:text-jet transition-colors duration-700 ease-out before:absolute before:-left-10 before:top-0 before:z-[-1] before:h-full before:w-[0%] before:skew-x-[45deg] before:bg-secondary-500 before:transition-all before:delay-75 before:duration-700 before:content-[''] hover:before:w-[150%] focus:outline-none focus:ring-secondary-400 focus:ring-offset-1 focus:ring-offset-white focus:before:w-[150%] focus-visible:ring-2 dark:border-secondary-700 dark:text-white dark:before:bg-secondary-700 dark:focus:ring-secondary-800 dark:focus:ring-offset-jet",
-        link: "text-gray-900 underline-offset-4 hover:underline dark:text-gray-50",
+          "bg-gray-100 text-black hover:bg-gray-100/80 dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-800/80",
+        ghost: "hover:bg-gray-100 hover:text-black dark:hover:bg-gray-800 dark:hover:text-gray-50",
+        swipe: "relative overflow-hidden rounded-md  px-4 py-2 text-sm text-secondary hover:text-black transition-colors duration-700 ease-out before:absolute before:-left-10 before:top-0 before:z-[-1] before:h-full before:w-[0%] before:skew-x-[45deg] before:bg-secondary-500 before:transition-all before:delay-75 before:duration-700 before:content-[''] hover:before:w-[150%] focus:outline-none focus:ring-secondary-400 focus:ring-offset-1 focus:ring-offset-white focus:before:w-[150%] focus-visible:ring-2 dark:border-secondary-700 dark:text-white dark:before:bg-secondary-700 dark:focus:ring-secondary-800 dark:focus:ring-offset-black",
+        link: "text-black underline-offset-4 hover:underline dark:text-gray-50",
       },
       size: {
         default: "h-10 px-4 py-2",

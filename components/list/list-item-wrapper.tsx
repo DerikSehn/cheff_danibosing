@@ -49,7 +49,7 @@ export default function TableItemWrapper({ children, onSubmit, clickArea, disabl
         return variant === 'modal' ? (
             <Dialog open={isOpen} onOpenChange={toggleMenu}>
 
-                <DialogContent className="bg-white-100">
+                <DialogContent className="bg-white">
                     {children}
                 </DialogContent>
             </Dialog>

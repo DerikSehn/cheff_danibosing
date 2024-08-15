@@ -1,5 +1,5 @@
 import { generateWhatsAppLink } from "@/lib/utils";
-import Logo from "@/public/logo.svg";
+import Logo from "@/public/logo.png";
 import { Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,7 +56,7 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-4">
                     <div className="not-prose flex flex-col gap-6">
                         <Link href="/">
-                            <h3 className="sr-only">Cultura Verde</h3>
+                            <h3 className="sr-only">Chef Daniela Bosing</h3>
                             <Image
                                 src={Logo}
                                 alt="Logo"
@@ -67,7 +67,7 @@ export function Footer() {
                         </Link>
                         <p>
 
-                            Cultura Verde é Uma empresa especializada em paisagismo e jardins fitoterápicos.
+                            Chef Daniela Bosing é Uma empresa especializada em paisagismo e jardins fitoterápicos.
                             De criações próprias e espírito empreendedor.
 
                         </p>
@@ -108,7 +108,7 @@ export function Footer() {
                         </Link>
                     </div>
                     <small className="mb-4 text-center font-normal  md:mb-0">
-                        &copy; {currentYear} <a href="https://material-tailwind.com/">Cultura Verde</a>. All Rights Reserved.
+                        &copy; {currentYear} <a href="https://material-tailwind.com/">Chef Daniela Bosing</a>. All Rights Reserved.
                     </small>
                 </div>
             </div>

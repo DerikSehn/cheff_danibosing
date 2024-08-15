@@ -14,8 +14,7 @@ import {
     PopoverContent,
     PopoverTrigger
 } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { isFunction } from "lodash";
+import { cn, isFunction } from "@/lib/utils";
 import { Check, ChevronsUpDown } from "lucide-react";
 import * as React from "react";
 

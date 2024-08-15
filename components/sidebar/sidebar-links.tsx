@@ -45,9 +45,9 @@ const SidebarLinks = ({ links, variants = { liVariants, itemVariants, iconVarian
             transition={{ type: 'inertia', duration: 0.2 }}
         >
             {links.map(({ title, items }, index) => (
-                <ul key={`${title}-${index}`} className='px-2 flex flex-col space-y-4 bg-white-100  border-white-200'>
+                <ul key={`${title}-${index}`} className='p-2 flex flex-col space-y-px bg-white-600  border-white-200 text-neutral-500 rounded-xl '>
                     <small
-                        className="opacity-0 group-hover/sidebar:opacity-80 duration-200 transition-opacity text-nowrap whitespace-nowrap text-xl font-bold"
+                        className="opacity-0 group-hover/sidebar:opacity-80 duration-200 transition-opacity text-nowrap whitespace-nowrap text-md font-medium"
                     >
                         {title}
                     </small>
@@ -56,15 +56,15 @@ const SidebarLinks = ({ links, variants = { liVariants, itemVariants, iconVarian
                         className=' flex flex-col'
                     >
                         {items.map(({ href, name, icon }, index) => (
-                            <Link key={index} href={href !== 'logout' ? href : '/'} onClick={() => getLink(href)} className='flex justify-center w-full items-center content-center hover:bg-white-200 p-2'>
+                            <Link key={index} href={href !== 'logout' ? href : '/'} onClick={() => getLink(href)} className='flex justify-center w-full items-center content-center hover:bg-white-800 p-2'>
                                 <motion.div
                                     variants={variants.iconVariants}
-                                    className='text-white-800'>
+                                    className='text-black-600'>
                                     {icon}
                                 </motion.div>
                                 <motion.div
                                     variants={variants.itemVariants}
-                                    className='text-white-800 whitespace-nowrap overflow-hidden'
+                                    className='text-black-600 whitespace-nowrap overflow-hidden'
                                 >
                                     {name}
                                 </motion.div>

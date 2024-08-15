@@ -20,7 +20,7 @@ export function ConfirmDialog({ children, onConfirm, title, message, confirmTitl
             <AlertDialogTrigger asChild>
                 {children}
             </AlertDialogTrigger>
-            <AlertDialogContent className="bg-white-100">
+            <AlertDialogContent className="bg-white">
                 <AlertDialogHeader>
                     <AlertDialogTitle>{title}</AlertDialogTitle>
                     <AlertDialogDescription>

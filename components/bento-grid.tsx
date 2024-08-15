@@ -32,14 +32,14 @@ export const BentoGridItem = ({
     description?: string | React.ReactNode;
     children?: React.ReactNode;
     icon?: React.ReactNode;
-    variant?: "static" | "primary";
+    variant?: "static" | "primary" | "card";
 }) => {
     return (
         <div
             className={cn(
                 "group/item overflow-hidden relative  w-full grow h-96 md:h-[23dvw]  hover:shadow-md duration-200 shadow-input dark:shadow-none dark:border-white/[0.2]  border border-transparent p-4  flex flex-col space-y-4",
                 className,
-                variant === "static" ? "cursor-default rounded-3xl" : "cursor-pointer rounded-3xl"
+                variant === "static" ? "cursor-default rounded-3xl" : variant === "card" ? "shadow-md rounded-lg" : "cursor-pointer rounded-3xl"
             )}
         >
             <span className=" h-full">
@@ -52,7 +52,10 @@ export const BentoGridItem = ({
                     <span className={cn("text-left transition-all duration-300",
                         variant === "static" ?
                             "relative"
-                            : "absolute z-10 opacity-0 group-hover/item:opacity-100 inset-0"
+                            :
+                            variant === "card" ?
+                                "hidden"
+                                : "absolute z-10 opacity-0 group-hover/item:opacity-100 inset-0"
                     )}>
 
                         <div className="font-bold mb-2 mt-2 text-xl uppercase">
@@ -71,7 +74,7 @@ export const BentoGridItem = ({
                     </span>
                 </div>
                 <span className={cn(" ",
-                    variant === "static" ? "relative" : "absolute transition duration-300 inset-0 group-hover/item:scale-[1.02] "
+                    variant === "static" ? "relative" : variant === "card" ? "relative" : "absolute transition duration-300 inset-0 group-hover/item:scale-[1.02] "
                 )}>
                     {children}
                 </span>

@@ -1,6 +1,6 @@
 import prisma, { handleGetColumns } from "@/lib/prisma";
 import { Image, Prisma, PrismaClient } from "@prisma/client";
-import { isObject } from "lodash";
+import { isObject } from "@/lib/utils";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 /**

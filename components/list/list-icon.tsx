@@ -19,7 +19,7 @@ const ListIcon = ({
         <Link
             className={twMerge(
                 `flex rounded-lg p-2 transition-colors`,
-                href && 'hover:bg-white-100',
+                href && 'hover:bg-white',
                 className
             )}
             href={href}

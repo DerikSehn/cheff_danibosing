@@ -34,7 +34,7 @@ export const EmailTemplate = ({
     <Html>
         <Head />
         <Preview>
-            Cultura Verde - A excelência em paisagismo
+            Chef Daniela Bosing - A excelência em paisagismo
         </Preview>
         <Body style={mainStyle}>
             <Container style={containerStyle}>

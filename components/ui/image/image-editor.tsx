@@ -94,7 +94,7 @@ const ImageUploader = ({ name, value, onChange }: { name: string, value: Blob | 
                     <Image src={URL.createObjectURL(value) || ""} alt="Preview" fill className="object-cover w-full h-auto rounded-md" />
                     <button
                         title="Escolher Imagem"
-                        className="absolute right-2 top-2 aspect-square rounded-xl p-2 hover:bg-white-100/10 transition-all"
+                        className="absolute right-2 top-2 aspect-square rounded-xl p-2 hover:bg-white/10 transition-all"
                         onClick={handleImageClick}
                         aria-label="Escolher imagem">
                         <ImagePlusIcon className="text-white-200 group-hover:text-white-300" size={40} />

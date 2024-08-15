@@ -30,7 +30,7 @@ export default function AdminDashboard({ projects }: { projects: ModelWithImage<
         <div className="col-span-12 ">
 
             <ul className="grid  mb-8 gap-6 my-6  ">
-                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white-100 shadow-md">
+                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
                     <List
                         itemsPerPage={8}
                         enableEditor

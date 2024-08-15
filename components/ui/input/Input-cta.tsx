@@ -29,7 +29,7 @@ export default function InputCTA({ description }: { description: string }) {
                 },
                 body: JSON.stringify({
                     to: email,
-                    subject: 'Cultura Verde - A excelência em paisagismo',
+                    subject: 'Chef Daniela Bosing - A excelência em paisagismo',
                     body: {
                         template: 'MESSAGE_RECEIVED',
                     },
@@ -61,13 +61,13 @@ export default function InputCTA({ description }: { description: string }) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Insira seu e-mail"
-                        className="w-full  rounded-full p-4 px-4 border-2 border-white-100 bg-white-200 transition-colors focus:bg-white-100 hover:bg-white-100 text-white-600 h-full"
+                        className="w-full  rounded-full p-4 px-4 border-2 border-white-100 bg-white-200 transition-colors focus:bg-white hover:bg-white text-white-600 h-full"
                         required
                     />
                     <Button
                         variant={'swipe'}
                         disabled={loading}
-                        className={cn(`p-3 px-4 h-full w-32 absolute right-0 z-10 ${loading ? 'bg-secondary-600 text-white-400 border-secondary-600 cursor-not-allowed' : 'bg-secondary-400 text-white-600 border-white-100 hover:bg-secondary-300 hover:text-white-700'}`)}
+                        className={cn(`p-3 px-4 h-full w-32 absolute right-0 z-10 ${loading ? 'bg-primary-600 text-white-400 border-primary-600 cursor-not-allowed' : 'bg-primary-400 text-white-600 border-white-100 hover:bg-primary-300 hover:text-white-700'}`)}
                         type="submit"
                     >
                         {loading ? 'Enviando...' : 'Enviar'}

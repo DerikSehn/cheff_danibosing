@@ -1,9 +1,9 @@
 import TableItemWrapper, { OnSubmitProps } from "@/components/list/list-item-wrapper";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { FormControl, FormItem, FormMessage } from "@/components/ui/form";
-import { cn } from "@/lib/utils";
+import { cn, isObject, isArray } from "@/lib/utils";
 import { Image as ImageType } from "@prisma/client";
-import { isArray, isObject } from "lodash";
+
 import Image from "next/image";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ImageEditor from "../../image/image-editor";
@@ -32,7 +32,7 @@ export default function AutoFormFiles({
 
         let res = undefined;
         if (isArray(field.value)) {
-            res = await Promise.all(field.value.map(async (image) => {
+            res = await Promise.all(field.value.map(async (image: any) => {
                 const file = await createFileFromUrl(image.url, image.name);
                 return { file, image };
             }

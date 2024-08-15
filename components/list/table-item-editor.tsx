@@ -3,7 +3,6 @@ import AutoForm, { AutoFormSubmit } from "@/components/ui/auto-form";
 import { getAsyncColumns } from '@/lib/prisma';
 import { CrudRequest, handleApiRequest, handleCreateImage } from '@/pages/api/protected/crud';
 import { motion } from 'framer-motion';
-import { isEqual } from 'lodash';
 import { useEffect, useState } from 'react';
 import { z } from 'zod';
 import AutoFormComplete from "../ui/auto-form/fields/auto-complete";
@@ -13,6 +12,7 @@ import AutoFormTextarea from "../ui/auto-form/fields/textarea";
 import { Button } from '../ui/button';
 import { Item } from './list-item';
 import { driver } from "driver.js";
+import { isEqual } from "@/lib/utils";
 
 type FormData = any
 
@@ -196,7 +196,7 @@ const TableItemEditor = ({ item, onClose = () => { }, tableName, method }: Table
                 onSubmit={onSubmit}
                 fieldConfig={getFieldConfig(columns.filter(canShowColumn))}
             >
-                <div className="absolute bottom-0 right-0 left-0 w-full bg-white-100 border-t p-4 flex flex-row justify-start shadow-[-20px_0px_10px_rgba(0,0,0,0.2)]">
+                <div className="absolute bottom-0 right-0 left-0 w-full bg-white border-t p-4 flex flex-row justify-start shadow-[-20px_0px_10px_rgba(0,0,0,0.2)]">
 
                     <AutoFormSubmit id="step-submit" className='mr-2 w-40'>
                         Salvar

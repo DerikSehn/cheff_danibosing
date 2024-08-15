@@ -116,10 +116,10 @@ const List = <T extends Item | undefined,>({
     const showPagination = itemsPerPage < currentList.length;
 
     return (
-        <div className={twMerge("relative space-y-2", className)}>
+        <div className={twMerge("relative space-y-2 min-h-52", className)}>
             {header && <div className={cn("flex col-span-full", header.className)}>
 
-                <SparklesText text={header.title} className={cn("text-white-700 text-2xl font-bold ")}
+                <SparklesText text={header.title} className={cn("text-black text-2xl font-thin ")}
                     duration={5}
                     sparklesCount={2}
                     colors={{ first: "#70b266", second: "#cfe5cc" }} />
@@ -127,7 +127,7 @@ const List = <T extends Item | undefined,>({
                     <ListItemWrapper onSubmit={handleSubmit}
                         clickArea={
                             <Button variant={'outline'} className="absolute  right-2 top-2 rounded-3xl flex justify-between space-x-2">
-                                <PlusIcon className=" w-6 h-6 text-white-800" />
+                                <PlusIcon className=" w-6 h-6 text-black" />
                             </Button>
                         }
                     >

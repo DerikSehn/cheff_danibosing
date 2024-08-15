@@ -71,7 +71,7 @@ export default function AdminUserPage({ comments, images, users }: { users: User
                     </div>
                 </MetricCard>
             </li>
-            <li className="relative col-span-2 space-y-4 p-4 border border-white-200 rounded-3xl bg-white-100 shadow-md">
+            <li className="relative col-span-2 space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
                 <div className="flex flex-col gap-4">
                     <div className=" flex items-center gap-2">
                         <UserIcon className="h-5 w-5" />
@@ -132,7 +132,7 @@ export default function AdminUserPage({ comments, images, users }: { users: User
                     </div>
                 )}
             </li>
-            <li className="col-span-3 space-y-4 border border-white-200 rounded-3xl bg-white-100 shadow-md">
+            <li className="col-span-3 space-y-4 border border-white-200 rounded-3xl bg-white shadow-md">
                 <List
                     items={images}
                     tableName={"image"}

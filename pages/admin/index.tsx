@@ -14,8 +14,6 @@ import { cn } from "@/lib/utils";
 import { ModelWithImage } from "@/prisma/prisma-utils";
 import { FilesIcon, ImagesIcon, StarIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
-import { driver } from "driver.js";
 
 
 export async function getServerSideProps() {
@@ -141,7 +139,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
 
                         <MetricCard key={index} className=''>
                             <div className="flex justify-between">
-                                <div className="relative z-10 font-bold text-md text-white-700/60 uppercase flex flex-col">
+                                <div className="relative z-10 font-bold text-md text-black-500/60 uppercase flex flex-col">
                                     <span>
                                         {metric.title}
                                     </span>
@@ -161,7 +159,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                 )}
             </div>
             <ul className="grid md:grid-cols-2 mb-8 gap-6 my-6  ">
-                <li id="step-customize" className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white-100 shadow-md">
+                <li id="step-customize" className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
 
                     <List
                         itemsPerPage={8}
@@ -177,7 +175,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                         <ProjectCard className="min-h-[200px]" />
                     </List>
                 </li>
-                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white-100 shadow-md">
+                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
                     <List
                         itemsPerPage={10}
                         enableEditor
@@ -192,7 +190,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                         <TestimonialCard />
                     </List>
                 </li>
-                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white-100 shadow-md">
+                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
                     <List
                         itemsPerPage={10}
                         enableEditor
@@ -208,7 +206,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                         <ServiceCard className='min-h-[200px]' />
                     </List>
                 </li>
-                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white-100 shadow-md">
+                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
                     <List
                         itemsPerPage={10}
                         enableEditor

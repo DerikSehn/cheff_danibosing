@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Image as ImageType, Testimonial } from "@prisma/client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import CurveIcon from "@/public/testimonials/curve";
+import CurveIcon from "@/public/curve-icon";
 import { LucideQuote, Quote } from "lucide-react";
 
 export const TestimonialCard = ({ item, readOnly, ...props }: { item: Testimonial & { image?: ImageType }, readOnly?: boolean, className?: string }) => {

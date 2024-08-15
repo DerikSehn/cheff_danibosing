@@ -31,7 +31,7 @@ export const SectionCard = ({ item, className }: { item: ModelWithImages<Section
                     {item.images?.slice(0, 4)?.map((image, index) =>
                         <div
                             key={index}
-                            className={"bg-white-100  w-full  flex flex-col space-y-4"}
+                            className={"bg-white  w-full  flex flex-col space-y-4"}
                         >
                             <div className="relative flex aspect-square rounded-lg overflow-hidden">
                                 <Image

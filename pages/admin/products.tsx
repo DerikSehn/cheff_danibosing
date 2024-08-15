@@ -33,7 +33,7 @@ export default function AdminProducts({ products, categories }: { products: Prod
                 </TabsList>
                 <TabsContent value="products">
                     <List items={products} tableName={'product'}
-                        className=' grid md:grid-cols-2 lg:grid-cols-4 gap-3 bg-white-100 shadow-lg rounded-lg p-4'
+                        className=' grid md:grid-cols-2 lg:grid-cols-4 gap-3 bg-white shadow-lg rounded-lg p-4'
                         itemsPerPage={18}
                         enableEditor
                         header={{ title: 'Produtos' }}
@@ -45,7 +45,7 @@ export default function AdminProducts({ products, categories }: { products: Prod
                 </TabsContent>
                 <TabsContent value="category">
                     <List items={categories} tableName={'category'}
-                        className=' grid md:grid-cols-2 lg:grid-cols-4 gap-3 bg-white-100 shadow-lg rounded-lg p-4'
+                        className=' grid md:grid-cols-2 lg:grid-cols-4 gap-3 bg-white shadow-lg rounded-lg p-4'
                         itemsPerPage={8}
                         enableEditor
                         header={{ title: 'Categorias' }}

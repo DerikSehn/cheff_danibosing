@@ -128,18 +128,18 @@ export default function AdminLayout({
     }, []);
 
     return (
-        <section className="bg-white-100 min-h-screen">
-            <div className="absolute z-0 inset-x-0 bg-gradient-to-b  from-white-400 to-primary-100 h-[300px]" >
+        <section className="bg-white-800 min-h-screen">
+            <div className="absolute z-0 inset-x-0 bg-gradient-to-b  from-white to-primary-100 h-[300px]" >
                 <Image fill src={backgroundImage} className='brightness-50 object-cover' alt='enterprise-background' />
             </div>
-            <Sidebar id="step-sidebar" className="hidden md:block hover:w-[15dvw] w-[9dvw] md:w-[8dvw] lg:w-[7dvw]  xl:w-[6dvw] space-y-4 py-2 z-50 group/sidebar bg-white-100">
+            <Sidebar id="step-sidebar" className="hidden md:block hover:w-[15dvw] w-[9dvw] md:w-[8dvw] lg:w-[7dvw]  xl:w-[6dvw] space-y-4 py-2 z-50 group/sidebar bg-white-800">
                 <SidebarLinks links={LINKS} />
             </Sidebar>
-            <div id="step-content" className="grid grid-cols-12 transition-all peer-hover:pl-[15dvw] peer-hover:lg:pl-[15dvw] md:pl-[15dvw] lg:pl-24 peer p-4 pr-0 gap-6 w-full content-center text-white-700">
+            <div id="step-content" className="grid grid-cols-12 transition-all peer-hover:pl-[15dvw] peer-hover:lg:pl-[15dvw] md:pl-[15dvw] lg:pl-24 peer p-4 pr-0 gap-6 w-full content-center text-black">
                 <section className="col-span-12 relative z-1 p-4 xl:pl-10 2xl: pl-8">
                     <Container className='mt-0 max-w-[1700px]'>
                         <div className="col-span-8 h-16 px-4 md:-translate-y-5">
-                            <p className=" font-medium text-lg text-white-300">
+                            <p className=" font-medium text-lg text-white">
                                 Painel Administrativo
                             </p>
                         </div>
@@ -162,9 +162,9 @@ const SiteMapSearch = () => {
     return (<>
         <div onClick={() => setIsOpen(true)} id="step-search" className="col-span-4 flex items-center justify-end h-16 px-4 md:-translate-y-5">
             <motion.input
-                className="bg-white-300 h-12 rounded-xl focus:bg-white-100 text-primary px-2"
+                className="bg-white h-12 rounded-xl focus:bg-white text-primary px-2"
             />
-            <span className="bg-primary p-2 -ml-11 text-white rounded-xl flex items-center">
+            <span className="bg-primary p-2 -ml-11 text-black rounded-xl flex items-center">
                 <Search />
             </span>
         </div>
@@ -177,7 +177,7 @@ const SiteMapSearch = () => {
                     <CommandGroup key={idx} heading={link.title}>
                         {link.items.map((item, idx) => (
                             <Link key={idx} href={item.href} >
-                                <CommandItem className="cursor-pointer flex gap-2 hover:bg-white-200 transition-colors duration-75">
+                                <CommandItem className="cursor-pointer flex gap-2 hover:bg-white transition-colors duration-75">
                                     {item.icon}
                                     <span>{item.name}</span>
                                 </CommandItem>

@@ -47,7 +47,7 @@ const ProductPage = ({ categories, initialProducts }: { categories: CategoryType
         fetchProducts();
     }, [category]);
     return (
-        <div className="bg-white-100 relative ">
+        <div className="bg-white relative ">
             <div className="absolute w-full h-96 bg-primary-200 z-0">
                 <Image
                     className="z-0 blur object-cover saturate-50 brightness-[.25] bg-primary-200"
@@ -59,7 +59,7 @@ const ProductPage = ({ categories, initialProducts }: { categories: CategoryType
                         <h2 className="z-10 flex flex-col font-moglan uppercase font-thin text-left text-7xl">Produtos</h2>
                     </div>
                 </div>
-                <Sidebar className="hidden md:block sticky top-10 md:top-32 col-span-1 space-y-4 py-2 z-50 rounded-md shadow-md shadow-white-200 bg-white-100 border-white-200 overflow-hidden transition-all w-full h-auto min-h-[600px] mb-10"
+                <Sidebar className="hidden md:block sticky top-10 md:top-32 col-span-1 space-y-4 py-2 z-50 rounded-md shadow-md shadow-white-200 bg-white border-white-200 overflow-hidden transition-all w-full h-auto min-h-[600px] mb-10"
                     animate={{ width: '100%' }}
                     whileHover={{ width: '100%' }}
                 >
@@ -80,7 +80,7 @@ const ProductPage = ({ categories, initialProducts }: { categories: CategoryType
                         </ul>
                     ))}
                 </Sidebar>
-                <div className="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-white-100/5 bg-clip-padding backdrop-filter rounded-lg bg-opacity-0 h-auto min-h-[600px] mb-10">
+                <div className="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-white/5 bg-clip-padding backdrop-filter rounded-lg bg-opacity-0 h-auto min-h-[600px] mb-10">
                     {products?.length ? products.map((product) => (
                         <Link key={product.id} href={`/product/${product.id}`} className="relative col-span-1 w-full">
                             <ProductCard key={product.id} item={product} className="text-white-800" />

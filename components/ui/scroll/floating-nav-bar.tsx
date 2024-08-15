@@ -8,6 +8,22 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button } from "../button";
 
+/**
+ * Represents a floating navigation bar component.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <FloatingNavBar
+ *    navItems={[
+ *      { name: "Home", link: "/home", icon: <HomeIcon /> },
+ *      { name: "About", link: "/about", icon: <AboutIcon /> },
+ *      { name: "Contact", link: "/contact", icon: <ContactIcon /> },
+ *    ]}
+ *    className="navbar"
+ * />
+ * ```
+ */
 export const FloatingNavBar = ({
     navItems,
     className,
@@ -41,10 +57,6 @@ export const FloatingNavBar = ({
             }
         }
     });
-    const phoneNumber = "(51) 99626-1079";
-    const message = "Olá, tudo bem? Gostaria de saber mais sobre os serviços da cultura verde. Poderia me fornecer mais informações?";
-    const whatsAppLink = generateWhatsAppLink({ phoneNumber, message });
-
     return (
 
         <motion.div
@@ -55,12 +67,12 @@ export const FloatingNavBar = ({
 
                 transition: {
                     duration: 0.6,
-                    type: 'spring'
+                    type: 'just'
                 },
             }}
             transition={{
                 duration: 0.6,
-                type: 'spring',
+                type: 'just',
                 bounce: 0.25,
                 damping: 30
             }}
@@ -68,15 +80,13 @@ export const FloatingNavBar = ({
                 textShadow: '1px 1px 1px  gray'
             }}
             className={cn(
-                "flex md:max-w-screen-2xl bg-primary-300 fixed top-0 inset-x-0 md:mx-auto transition-colors duration-500 border-b md:border md:border-primary/40 dark:border-white/20  md:rounded-b-[40px] md:rounded-full dark:bg-primary-300 backdrop-blur-[2px]  z-[5000] px-4 md:pl-8 py-2  items-between justify-between md:space-x-4",
-                isAtTop ? " md:bg-transparent md:border-none md:top-4 lg:top-6 xl:top-10 2xl:top-12" : "md:bg-primary/70 md:border-2 md:top-2 lg:top-4 xl:top-6",
+                "flex p-8 pb-2 uppercase font-montserrat tracking-widest fixed top-0 inset-x-0 md:mx-auto transition-colors duration-500 bg-black/50 text-white   z-[5000] items-between justify-between md:space-x-4",
+                isAtTop ? " md:bg-transparent  " : "",
                 className,
             )}
         >
-            <div className="hidden md:block relative max-w-72 -my-2 h-[80px] w-1/2 md:w-1/4">
-                {/* max width is 200px */}
-                <Image src="/logo-white.png" alt="logo" fill className="object-cover object-center" />
-                {/* <Logo className="dark:hidden block" /> */}
+            <div className="hidden md:block relative max-w-[200px]  h-[72px] w-1/2">
+                <Image src="/logo.png" alt="logo" fill className="object-contain object-center" />
             </div>
             <div className="hidden sm:flex justify-end gap-6">
                 {navItems.map((navItem: any, idx: number) => (
@@ -85,35 +95,36 @@ export const FloatingNavBar = ({
                         href={navItem.link}
 
                         className={cn(
-                            "relative group/link font-bold flex dark:text-white-50 items-center space-x-1 text-white-100 dark:hover:text-white-300 hover:text-white-200"
+                            "relative font-bold flex flex-col justify-center items-center space-x-1 group/link px-2",
+                            "transition-all duration-500 hover:text-primary-800 "
                         )}
                     >
+                        <motion.span className="absolute inset-y-0 transition-all duration-500 w-0 group-hover/link:w-full border-t-2 border-primary-600   group-hover/link:bg-gradient-to-b from-primary-300/10" />
                         <motion.span
                             animate={{
-                                fontWeight: isAtTop ? 300 : 600,
+                                fontWeight: isAtTop ? 500 : 600,
                                 transition: {
                                     duration: 0.3,
-                                    type: 'spring'
+                                    type: 'just'
                                 },
                             }}
-                            className={cn("hidden sm:block text-[10px]  lg:text-lg relative")}>
-                            <motion.span className="absolute bottom-0 w-0 h-[2px] transition-all group-hover/link:w-full mt-1 bg-secondary" />
-                            {navItem.name}</motion.span>
+                            className={cn("hidden sm:block")}>
+                            {navItem.name}
+                        </motion.span>
                     </Link>
                 ))}
-                <Link href={whatsAppLink} target="_blank" className="flex items-center justify-center  ">
-                    <Button
-                        variant={'swipe'}
-                        className="text-md group hover:pr-10 transition-all"
-                    >
-                        WhatsApp
-                        <MessageCircleIcon className="absolute opacity-0 transition-all duration-500 rotate-12 group-hover:rotate-0 group-hover:opacity-100 right-2 translate-x-10 group-hover:translate-x-0" />
-                    </Button>
-                </Link>
 
 
 
             </div>
+            <Link href={'/cardapio'} target="_blank" className="flex items-center justify-center w-[200px]  ">
+                <Button
+                    variant={'swipe'}
+                    className="text-md group transition-all bg-primary/10 w-full"
+                >
+                    Montar Cardápio
+                </Button>
+            </Link>
             <div className="flex sm:hidden h-20 w-full justify-center">
 
                 <Dropdown className="w-full flex justify-center items-center">
@@ -128,10 +139,10 @@ export const FloatingNavBar = ({
                     </TriggerWrapper>
                     <Tabs>
                         <Tab>
-                            <div className="flex gap-4 p-4 w-full h-full bg-primary-300 text-jet-900 border-b border-jet-900">
+                            <div className="flex gap-4 p-4 w-full h-full bg-primary-900 text-white-900 border-b border-white-900">
                                 <div
                                     className={
-                                        'text-white font-bold text-3xl flex items-end justify-start p-4 w-56 h-[200px] rounded-md bg-gradient-to-br [background-size:150%] from-secondary-300   to-primary-400'
+                                        'text-white font-bold text-3xl flex items-end justify-start p-4 w-56 h-[200px] rounded-md bg-gradient-to-br [background-size:150%] from-primary-300   to-primary-400'
                                     }
                                 >
                                     Cultura <br /> Verde
@@ -140,10 +151,10 @@ export const FloatingNavBar = ({
                                     {navItems.map((navItem, idx: number) => (
                                         <Link
                                             key={`link=${idx}`}
-                                            href={navItem.link} className="flex items-center justify-start space-x-4 active:bg-primary-800/40 p-2 w-full rounded-lg">
-                                            <h3 className={'dark:text-white text-secondary-800'}>{navItem.icon}</h3>
+                                            href={navItem.link} className="flex items-center justify-start space-x-4 active:bg-primary-900/40 p-2 w-full rounded-lg">
+                                            <h3 className={'dark:text-white text-primary-800'}>{navItem.icon}</h3>
 
-                                            <p className={'text-jet-900 text-xl '}>
+                                            <p className={'text-white-900 text-xl '}>
                                                 {navItem.name}
                                             </p>
                                         </Link>
