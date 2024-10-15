@@ -1,0 +1,282 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL") // uses connection pooling
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  password      String
+  accounts      Account[]
+  images        Image[]
+  sessions      Session[]
+  orders        Order[]
+  addresses     Address[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Project {
+  title       String
+  description String
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      Image[]
+}
+
+model Comment {
+  id          Int      @id @default(autoincrement())
+  model       String
+  field       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Image {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String?
+  url         String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  projectId   Int?
+  userId      String?
+  Project     Project?     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  User        User?        @relation(fields: [userId], references: [id])
+  Testimonial Testimonial?
+  Service     Service[]
+  Section     Section?     @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId   Int?
+  Partner     Partner[]
+  Product     Product[]
+  Info        Setting[]
+}
+
+model Testimonial {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  job         String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  image       Image?   @relation(fields: [imageId], references: [id])
+  imageId     Int?     @unique
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  image       Image    @relation(fields: [imageId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  imageId     Int
+}
+
+model EmailTemplate {
+  id             Int            @id @default(autoincrement())
+  keyword        String         @unique
+  headerTitle    String
+  headerSubtitle String
+  buttonText     String
+  buttonLink     String
+  footerText     String
+  contents       EmailContent[]
+  links          EmailLink[]
+}
+
+model EmailContent {
+  id              Int            @id @default(autoincrement())
+  heading         String
+  paragraph       String
+  EmailTemplate   EmailTemplate? @relation(fields: [emailTemplateId], references: [id])
+  emailTemplateId Int?
+}
+
+model EmailLink {
+  id              Int            @id @default(autoincrement())
+  description     String
+  href            String
+  EmailTemplate   EmailTemplate? @relation(fields: [emailTemplateId], references: [id])
+  emailTemplateId Int?
+}
+
+model Section {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      Image[]
+  slug        String   @unique
+}
+
+model ReceivedEmail {
+  id        Int      @id @default(autoincrement())
+  email     String
+  name      String?
+  message   String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Partner {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  imageId     Int
+  image       Image    @relation(fields: [imageId], references: [id])
+}
+
+model PasswordResetToken {
+  id        Int      @id @default(autoincrement())
+  email     String
+  token     String   @unique
+  expires   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Novas tabelas para e-commerce
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int
+  unitType    String      @default("un")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  images      Image[]
+  categories  Category[]
+  orders      OrderItem[]
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  total     Float
+  status    String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  userId    String
+  user      User        @relation(fields: [userId], references: [id])
+  items     OrderItem[]
+  address   Address     @relation(fields: [addressId], references: [id])
+  addressId Int
+}
+
+model OrderItem {
+  id        Int          @id @default(autoincrement())
+  quantity  Int
+  price     Float
+  productId Int
+  product   Product      @relation(fields: [productId], references: [id])
+  orderId   Int
+  order     Order        @relation(fields: [orderId], references: [id])
+  reviewId  Int          @unique
+  review    OrderReview? @relation(fields: [reviewId], references: [id])
+}
+
+model Address {
+  id      Int     @id @default(autoincrement())
+  street  String
+  city    String
+  state   String
+  zip     String
+  country String
+  userId  String
+  user    User    @relation(fields: [userId], references: [id])
+  orders  Order[]
+}
+
+model Setting {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  value       String?
+  imageId     Int?
+  image       Image?   @relation(fields: [imageId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model OrderReview {
+  id        Int        @id @default(autoincrement())
+  rating    Int
+  comment   String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  userId    String
+  OrderItem OrderItem?
+}
+
+// menu strucure for mealplan
+
+model MenuItem {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  price       Float
+  category    MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId  Int
+}
+
+model MenuCategory {
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
+  description String?
+  items       MenuItem[]
+}
