@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_PRISMA_URL_NON_POOLING") // uses connection pooling
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL") // uses connection pooling
 }
 
 model User {
@@ -82,11 +81,11 @@ model Image {
   updatedAt   DateTime     @updatedAt
   projectId   Int?
   userId      String?
-  Project     Project?     @relation(fields: [projectId], references: [id])
+  Project     Project?     @relation(fields: [projectId], references: [id], onDelete: Cascade)
   User        User?        @relation(fields: [userId], references: [id])
   Testimonial Testimonial?
   Service     Service[]
-  Section     Section?     @relation(fields: [sectionId], references: [id])
+  Section     Section?     @relation(fields: [sectionId], references: [id], onDelete: Cascade)
   sectionId   Int?
   Partner     Partner[]
   Product     Product[]
@@ -269,8 +268,9 @@ model OrderReview {
 model MenuItem {
   id          Int          @id @default(autoincrement())
   title       String
-  description String
-  category    MenuCategory @relation(fields: [categoryId], references: [id])
+  description String?
+  price       Float
+  category    MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId  Int
 }
 

@@ -14,6 +14,8 @@ import { cn } from "@/lib/utils";
 import { ModelWithImage } from "@/prisma/prisma-utils";
 import { FilesIcon, ImagesIcon, StarIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
+import { MenuCategoryCard } from "@/components/card/menu-category-card";
+import MenuEditor from "./menu/menu-editor";
 
 
 export async function getServerSideProps() {
@@ -60,6 +62,12 @@ export async function getServerSideProps() {
 
     const imagesCount = await prisma.image.count();
     const usersCount = await prisma.user.count();
+
+    const menuCategories = await prisma.menuCategory.findMany({
+        include: {
+            items: true,
+        }
+    })
 
     const session = await getSession();
 
@@ -110,7 +118,7 @@ export async function getServerSideProps() {
 
     ]
 
-    return { props: { projects, session, metrics, testimonials, services, partners } };
+    return { props: { projects, session, metrics, testimonials, services, partners, menuCategories } };
 }
 
 const icons = {
@@ -129,7 +137,7 @@ interface Metric {
     link?: string;
 }
 
-export default function AdminDashboard({ metrics, projects, testimonials, services, partners }: { metrics: Metric[], projects: ModelWithImage<Project>[], session: Session, testimonials: Testimonial[], services: ModelWithImage<Service>[], partners: Partner[] }) {
+export default function AdminDashboard({ metrics, projects, testimonials, services, partners, menuCategories }: { metrics: Metric[], projects: ModelWithImage<Project>[], session: Session, testimonials: Testimonial[], services: ModelWithImage<Service>[], partners: Partner[], menuCategories: any }) {
 
     return (
         <div className="col-span-12 ">
@@ -159,7 +167,24 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                 )}
             </div>
             <ul className="grid md:grid-cols-2 mb-8 gap-6 my-6  ">
-                <li id="step-customize" className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
+                <li id="step-customize" className="space-y-4 p-4 border  rounded-3xl bg-white-800 shadow-md">
+                    <List items={menuCategories} tableName={'menuCategory'}
+                        className=' grid md:grid-cols-2 gap-3 '
+                        itemsPerPage={18}
+                        enableEditor
+                        customEditor={
+                            /* @ts-ignore */
+                            <MenuEditor />
+                        }
+                        header={{ title: 'Menus de Orçamento' }}
+                    >
+                        {/* @ts-ignore */}
+                        <MenuCategoryCard className="" />
+                    </List>
+                </li>
+
+
+                <li className="space-y-4 p-4 border  rounded-3xl bg-white-800 shadow-md">
 
                     <List
                         itemsPerPage={8}
@@ -175,7 +200,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                         <ProjectCard className="min-h-[200px]" />
                     </List>
                 </li>
-                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
+                <li className="space-y-4 p-4 border  rounded-3xl bg-white-800 shadow-md">
                     <List
                         itemsPerPage={10}
                         enableEditor
@@ -190,7 +215,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                         <TestimonialCard />
                     </List>
                 </li>
-                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
+                <li className="space-y-4 p-4 border  rounded-3xl bg-white-800 shadow-md">
                     <List
                         itemsPerPage={10}
                         enableEditor
@@ -206,7 +231,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
                         <ServiceCard className='min-h-[200px]' />
                     </List>
                 </li>
-                <li className="space-y-4 p-4 border border-white-200 rounded-3xl bg-white shadow-md">
+                <li className="space-y-4 p-4 border  rounded-3xl bg-white-800 shadow-md">
                     <List
                         itemsPerPage={10}
                         enableEditor
@@ -225,7 +250,7 @@ export default function AdminDashboard({ metrics, projects, testimonials, servic
             </ul>
 
 
-        </div>
+        </div >
     )
 }
 

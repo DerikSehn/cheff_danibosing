@@ -56,6 +56,9 @@ async function handleCrudRequest(
 ) {
   try {
     let res: any;
+    console.log(data);
+    console.log(table);
+    console.log(method);
     switch (method) {
       case "create":
         /* @ts-ignore */
@@ -89,6 +92,7 @@ async function handleCrudRequest(
         return res;
     }
   } catch (error) {
+    console.log(error);
     throw new Error("Erro ao executar a operação");
   }
 }
@@ -178,13 +182,6 @@ function formatUpdateCommand(
    *
    */
   function handleNestedUpdates(value: any, key: string, enableId?: boolean) {
-    /*  [
-    { key: 'image', updates: [] },
-    {
-      key: 'category',
-      updates: [ { where: { id: 6 }, data: { productId: 6 } } ]
-    }
-  ] */
     return value.map((item: any) => {
       const { id: nestedId, ...nestedData } = item;
       console.log(item);
@@ -202,6 +199,7 @@ function formatUpdateCommand(
     });
   }
 
+  console.log(fields);
   Object.entries(fields).forEach(([key, value]) => {
     if (Array.isArray(value)) {
       const isList = Prisma.dmmf.datamodel.models
@@ -240,34 +238,51 @@ function formatUpdateCommand(
     nestedItems,
   };
 }
-
 function formatCreateCommand(
   table: CrudRequest["table"],
   data: CrudRequest["data"]
 ): Prisma.ProjectCreateArgs {
+  console.log("Table:", table);
   /* connect lists to the parent prisma model */
-  const { id, ...fields } = data;
   const columns = handleGetColumns(table as CrudRequest["table"]);
 
-  Object.entries(fields).forEach(([key, value]) => {
+  console.log(data);
+
+  let include: any = {};
+
+  Object.entries(data).forEach(([key, value]) => {
+    console.log(key);
+    console.log(Array.isArray(value));
+
     if (Array.isArray(value)) {
       const isList = columns?.find((f) => f.name === key)?.isList;
 
       // if the item is a valid array, It shoud be connected depending on the isList flag
       if (value.length > 0) {
-        fields[key] = {
-          connect: isList
-            ? value.map((item: any) => ({
-                id: item.id,
-              }))
-            : { id: value[0].id },
-        };
+        console.log("isList", isList);
+        if (isList) {
+          if (value[0].id) {
+            data[key] = {
+              connect: isList
+                ? value.map((item: any) => ({
+                    id: item.id,
+                  }))
+                : { id: value[0].id },
+            };
+          } else {
+            console.log("criando novo nested item: ", value);
+            data[key] = {
+              create: value,
+            };
+          }
+        }
+        include[key] = getRelatedTable(key, table as any) !== null;
       } else {
-        // if the item is not a valid array, It shoud be removed from the fields object
-        delete fields[key];
+        // if the item is not a valid array, It shoud be removed from the data object
+        delete data[key];
       }
     } else if (isObject(value)) {
-      fields[key] = {
+      data[key] = {
         connect: {
           /* @ts-ignore */
           id: value.id,
@@ -275,11 +290,15 @@ function formatCreateCommand(
       };
     }
   });
+
+  console.log("Data after processing:", data);
+  console.log("Include after processing:", include);
+
   return {
-    data: fields,
+    data: data,
+    include,
   };
 }
-
 function getRelatedTable(key: string, table: string) {
   const model = Prisma.dmmf.datamodel.models.find(
     (m) => m.name.toLowerCase() === table.toLowerCase()

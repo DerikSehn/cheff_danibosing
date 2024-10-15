@@ -89,7 +89,7 @@ const UserEditor: React.FC<UserEditorProps> = ({ item, method, onClose }) => {
     const mutation = useMutation({
         mutationFn: method === 'create' ? createUser : updateUser,
         onSuccess: (data) => {
-            isFunction(onClose) && onClose({ item: user.id ? user : data.user, method });
+            typeof onClose === 'function' && onClose({ item: user.id ? user : data.user, method });
         },
         onError: () => notify(`Erro ao ${method === 'create' ? 'criar' : 'atualizar'} usuário.`, { type: 'error' }),
     });
@@ -114,7 +114,7 @@ const UserEditor: React.FC<UserEditorProps> = ({ item, method, onClose }) => {
     const deleteUser = useMutation({
         mutationFn: deleteUserFn,
         onSuccess: () => {
-            isFunction(onClose) && onClose({ item: user as any, method: 'delete' });
+            typeof onClose === 'function' && onClose({ item: user as any, method: 'delete' });
         },
         onError: () => notify(`Erro ao excluir usuário.`, { type: 'error' }),
     });

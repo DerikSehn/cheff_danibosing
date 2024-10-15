@@ -45,13 +45,15 @@ export default function AutoFormArray({
   const itemDefType = isZodArray(item)
     ? item._def.type
     : isZodDefault(item)
-    ? item._def.innerType._def.type
-    : null;
+      ? item._def.innerType._def.type
+      : null;
+
+  console.log(fields)
 
   return (
-    <AccordionItem value={name} className="border-none">
-      <AccordionTrigger>{title}</AccordionTrigger>
-      <AccordionContent>
+    <AccordionItem value={name} className=" p-2 rounded-lg bg-white-800">
+      <AccordionTrigger>{title}{" ( "}{fields.length}{" )"}</AccordionTrigger>
+      <AccordionContent >
         {fields.map((_field, index) => {
           const key = _field.id;
           return (
@@ -85,7 +87,7 @@ export default function AutoFormArray({
           className="mt-4 flex items-center"
         >
           <Plus className="mr-2" size={16} />
-          Add
+          Adicionar
         </Button>
       </AccordionContent>
     </AccordionItem>

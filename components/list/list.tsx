@@ -88,7 +88,6 @@ const List = <T extends Item | undefined,>({
     }
 
 
-
     useEffect(() => {
         if (sortOptions.length === 0) {
             setSortOption('');
@@ -131,7 +130,11 @@ const List = <T extends Item | undefined,>({
                             </Button>
                         }
                     >
-                        <TableItemEditor method={'create'} onClose={() => { }} tableName={tableName!} />
+                        {customEditor ?
+                            cloneElement(customEditor, { method: 'create', onClose: handleSubmit, tableName: tableName! })
+                            : <TableItemEditor method={'create'} onClose={() => { }} tableName={tableName!} />
+                        }
+
                     </ListItemWrapper>
                     : null
                 }

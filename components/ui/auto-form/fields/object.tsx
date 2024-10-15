@@ -17,6 +17,7 @@ import {
 } from "../utils";
 import AutoFormArray from "./array";
 import resolveDependencies from "../dependencies";
+import { cn } from "@/lib/utils";
 
 function DefaultParent({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
@@ -30,12 +31,14 @@ export default function AutoFormObject<
   fieldConfig,
   path = [],
   dependencies = [],
+  className
 }: {
   schema: SchemaType | z.ZodEffects<SchemaType>;
   form: ReturnType<typeof useForm>;
   fieldConfig?: FieldConfig<z.infer<SchemaType>>;
   path?: string[];
   dependencies?: Dependency<z.infer<SchemaType>>[];
+  className?: string;
 }) {
   const { watch } = useFormContext(); // Use useFormContext to access the watch function
 
@@ -63,7 +66,7 @@ export default function AutoFormObject<
   };
 
   return (
-    <Accordion type="multiple" className="space-y-5 border-none">
+    <Accordion type="multiple" className={cn("space-y-5 border-none", className)}>
       {Object.keys(shape).map((name) => {
         let item = shape[name] as z.ZodAny;
         item = handleIfZodNumber(item) as z.ZodAny;
@@ -72,6 +75,7 @@ export default function AutoFormObject<
         const key = [...path, name].join(".");
 
         const {
+
           isHidden,
           isDisabled,
           isRequired: isRequiredByDependency,
